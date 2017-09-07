@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: helvetica, sans-serif; }
+
+.header-component {
+  display: flex;
+  flex-direction: column;
+  background-color: #F2F0E7;
+  padding: 10px;
+  text-align: center; }
+  .header-component .logo {
+    margin: 0;
+    color: #311E11;
+    font-weight: 300;
+    font-size: 40px;
+    margin-bottom: 10px; }
+    .header-component .logo .logo-accent {
+      color: #CDC08B;
+      font-weight: 500; }
+  .header-component .nav-link-container {
+    display: flex;
+    justify-content: center; }
+    .header-component .nav-link-container .nav-link {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #311E11;
+      background-color: #CDC08B;
+      border-radius: 4px;
+      padding: 5px; }
+
+/*# sourceMappingURL=base-styles.css.map */

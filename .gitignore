@@ -21,5 +21,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # SCSS
-src/**/*.css
 .sass-cache

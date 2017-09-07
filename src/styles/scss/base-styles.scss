@@ -1,0 +1,52 @@
+@import "variables.scss";
+
+// GENERAL STYLES ///////////////////////////////////
+/////////////////////////////////////////////////////
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: helvetica, sans-serif;
+}
+
+
+// HEADER STYLES ////////////////////////////////////
+/////////////////////////////////////////////////////
+
+.header-component {
+  display: flex;
+  flex-direction: column;
+  background-color: $primaryLightColor;
+  padding: 10px;
+  text-align: center;
+
+  .logo {
+    margin: 0;
+    color: $primaryDarkColor;
+    font-weight: 300;
+    font-size: 40px;
+    margin-bottom: 10px;
+
+    .logo-accent {
+      color: $accentColor;
+      font-weight: 500;
+    }
+  }
+
+  .nav-link-container {
+    display: flex;
+    justify-content: center;
+
+    .nav-link {
+      margin: 0 10px;
+      text-decoration: none;
+      color: $primaryDarkColor;
+      background-color: $accentColor;
+      border-radius: 4px;
+      padding: 5px;
+    }
+  }
+}

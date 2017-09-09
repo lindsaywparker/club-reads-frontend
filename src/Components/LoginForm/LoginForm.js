@@ -7,6 +7,31 @@ export default class LoginForm extends Component {
     this.state = {
       input: '',
     };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+    const email = this.state.input;
+    // post fetch request with email
+    fetch('/api/v1/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then(res => res.json())
+      .then((data) => {
+        if (data.error) {
+          document.querySelector('.msg-to-user').innerHTML = data.error;
+        } else {
+          // otherwise => redirect
+          // this.props.history.push(':/club_name')
+        }
+      });
   }
 
   render() {

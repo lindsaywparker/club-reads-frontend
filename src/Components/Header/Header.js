@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 
 const Header = () => (
   <header className="header-component">
@@ -6,6 +7,10 @@ const Header = () => (
     <nav className="nav-link-container">
       <a className="nav-link" href="#">Suggest a Book</a>
       <a className="nav-link" href="#">Logout</a>
+      <NavLink to='/login'
+               className="nav-link"
+               activeClassName='selected'
+               >Login</NavLink>
     </nav>
   </header>
 );

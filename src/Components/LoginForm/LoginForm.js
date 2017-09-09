@@ -28,8 +28,7 @@ export default class LoginForm extends Component {
         if (data.error) {
           document.querySelector('.msg-to-user').innerHTML = data.error;
         } else {
-          // otherwise => redirect
-          // this.props.history.push(':/club_name')
+          this.props.history.push('/clubpage');
         }
       });
   }

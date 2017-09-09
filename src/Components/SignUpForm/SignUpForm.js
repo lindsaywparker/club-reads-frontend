@@ -6,13 +6,38 @@ export default class SignUpForm extends Component {
     this.state = {
       input: '',
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const email = this.state.input;
+    // post fetch request with email
+    fetch('/api/v1/user/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then(res => res.json())
+      .then((data) => {
+        if (data.error) throw new Error('A user with this email already exists');
+        this.props.history.push('/clubpage');
+      })
+      .catch((data) => {
+        document.querySelector('.msg-to-user').innerHTML = data;
+      });
   }
 
   render() {
     return (
       <div className="signup-component">
         <h1 className="logo">club<span className="logo-accent">reads</span></h1>
-        <form className="signup-form" onSubmit={() => console.log("What's up you clicked the Sign Up button!")}>
+        <form className="signup-form" onSubmit={e => this.handleSubmit(e)}>
           <input
             className="signup-email-input"
             type="email"
@@ -33,6 +58,7 @@ export default class SignUpForm extends Component {
             value="sign up"
           />
         </form>
+        <p className="msg-to-user"></p>
       </div>
     );
   }

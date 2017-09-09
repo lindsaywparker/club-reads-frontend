@@ -26,7 +26,6 @@ export default class SignUpForm extends Component {
       .then(res => res.json())
       .then((data) => {
         if (data.error) throw new Error('A user with this email already exists');
-        // TODO: redirect to club page
         this.props.history.push('/clubpage');
       })
       .catch((data) => {

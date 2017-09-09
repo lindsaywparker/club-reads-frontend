@@ -38,7 +38,7 @@ export default class LoginForm extends Component {
     return (
       <div className="login-component">
         <h1 className="logo">club<span className="logo-accent">reads</span></h1>
-        <form className="login-form">
+        <form className="login-form" onSubmit={e => this.handleLogin(e)}>
           <input
             className="login-email-input"
             type="email"
@@ -47,13 +47,15 @@ export default class LoginForm extends Component {
             placeholder="email"
             onChange={event => this.setState({ input: event.target.value })}
           />
-          <button
-            className="login-btn"
-            onClick={() => console.log("What's up you clicked the login button!")}
-          >
-            login
-          </button>
-          <NavLink to="/signup">sign up</NavLink>
+          <container className="login-btns">
+            <input
+              type="submit"
+              className="login-btn"
+              value="login"
+            />
+            <NavLink to="/signup">sign up</NavLink>
+          </container>
+          <div className="msg-to-user"></div>
         </form>
       </div>
     );

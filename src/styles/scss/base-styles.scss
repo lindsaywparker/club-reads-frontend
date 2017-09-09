@@ -10,8 +10,75 @@
 body {
   margin: 0;
   font-family: helvetica, sans-serif;
+  text-align: center;
 }
 
+button {
+  height: 35px;
+  border: 1px solid $borderColor;
+  background-color: $accentColor;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// LOGO STYLES //////////////////////////////////////
+/////////////////////////////////////////////////////
+
+.logo {
+  margin: 0;
+  margin-bottom: 10px;
+  color: $primaryDarkColor;
+  font-size: 60px;
+  font-weight: 300;
+
+  .logo-accent {
+    color: $accentColor;
+    font-weight: 500;
+  }
+}
+
+// LOGIN & SIGNUP STYLES ////////////////////////////
+/////////////////////////////////////////////////////
+
+form {
+  width: 90%;
+  margin: auto;
+}
+
+.login-component {
+  padding-top: 100px;
+}
+
+.login-email-input {
+  width: 100%;
+  height: 35px;
+  padding: 5px;
+  border: 1px solid $borderColor;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.login-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-btn, .signup-navlink {
+  width: 45%;
+}
+
+.signup-navlink {
+  height: 35px;
+  padding: 8px;
+  border: 1px solid $borderColor;
+  border-radius: 3px;
+  background-color: $primaryLightColor;
+  color: $accentColor;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
 
 // HEADER STYLES ////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -21,19 +88,9 @@ body {
   flex-direction: column;
   background-color: $primaryLightColor;
   padding: 10px;
-  text-align: center;
 
   .logo {
-    margin: 0;
-    color: $primaryDarkColor;
-    font-weight: 300;
     font-size: 40px;
-    margin-bottom: 10px;
-
-    .logo-accent {
-      color: $accentColor;
-      font-weight: 500;
-    }
   }
 
   .nav-link-container {

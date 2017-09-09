@@ -12,7 +12,7 @@ export default class SignUpForm extends Component {
     return (
       <div className="signup-component">
         <h1 className="logo">club<span className="logo-accent">reads</span></h1>
-        <form className="signup-form">
+        <form className="signup-form" onSubmit={() => console.log("What's up you clicked the Sign Up button!")}>
           <input
             className="signup-email-input"
             type="email"
@@ -21,12 +21,17 @@ export default class SignUpForm extends Component {
             placeholder="email"
             onChange={event => this.setState({ input: event.target.value })}
           />
-          <button
+          <div className="dropdown-container">
+            <label htmlFor="club-dropdown">
+              Club:
+              <select name="club-dropdown" id="club-dropdown" />
+            </label>
+          </div>
+          <input
+            type="submit"
             className="signup-btn"
-            onClick={() => console.log("What's up you clicked the Sign Up button!")}
-          >
-            sign up
-          </button>
+            value="sign up"
+          />
         </form>
       </div>
     );

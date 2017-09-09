@@ -28,12 +28,7 @@ export default class LoginForm extends Component {
           >
             login
           </button>
-          {/* <NavLink
-            to="/signup"
-          >
-            sign up
-          </NavLink> */}
-          
+          <NavLink to="/signup">sign up</NavLink>
         </form>
       </div>
     );

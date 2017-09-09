@@ -23,7 +23,15 @@ export default class SignUpForm extends Component {
         email,
       }),
     })
-      .then(res => res.json());
+      .then(res => res.json())
+      .then((data) => {
+        if (data.error) throw new Error('A user with this email already exists');
+        // TODO: redirect to club page
+        this.props.history.push('/clubpage');
+      })
+      .catch((data) => {
+        document.querySelector('.msg-to-user').innerHTML = data;
+      });
   }
 
   render() {
@@ -51,6 +59,7 @@ export default class SignUpForm extends Component {
             value="sign up"
           />
         </form>
+        <p className="msg-to-user"></p>
       </div>
     );
   }

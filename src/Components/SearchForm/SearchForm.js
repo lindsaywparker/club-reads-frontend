@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import apiKey from '../../../api';
+var parseString = require('xml2js').parseString;
 
 export default class SearchFrom extends Component {
   constructor() {
@@ -12,26 +14,21 @@ export default class SearchFrom extends Component {
   handleSearch(e) {
     e.preventDefault();
     console.log('search clicked!');
-    // const email = this.state.input;
-    // // post fetch request with email
-    // fetch('/api/v1/user/login', {
-    //   method: 'POST',
+    const searchValue = this.state.input;
+    // fetch(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?key=${apiKey}&q=${searchValue}`, {
     //   headers: {
-    //     'Content-Type': 'application/json',
+    //     'Access-Control-Allow-Origin': '*',
     //   },
-    //   body: JSON.stringify({
-    //     email,
-    //   }),
     // })
-    //   .then(res => res.json())
-    //   .then((data) => {
-    //     if (data.error) {
-    //       document.querySelector('.msg-to-user').innerHTML = data.error;
-    //     } else {
-    //       // otherwise => redirect
-    //       // this.props.history.push(':/club_name')
+    //   .then((res) => {
+    //     const contentType = res.headers.get('content-type')
+    //     console.log(contentType);
+    //     if (contentType.includes('application/xml')) {
+    //       return parseString(res, (err, res) => {
+    //     });
     //     }
-    //   });
+    //   })
+    //   .then(data => console.dir(data));
   }
 
   render() {

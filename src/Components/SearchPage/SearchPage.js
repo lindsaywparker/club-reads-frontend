@@ -27,7 +27,6 @@ export default class SearchPage extends Component {
       .then((data) => {
         parseString(data, (err, result) => {
           const bookResults = searchResultCleaner(result.GoodreadsResponse.search[0].results[0].work);
-          console.log(bookResults);
           this.setState({ books: bookResults });
         });
       });

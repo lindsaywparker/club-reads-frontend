@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiKey from '../../../api';
+import apiKey from '../../api';
 var parseString = require('xml2js').parseString;
 
 export default class SearchFrom extends Component {
@@ -15,20 +15,19 @@ export default class SearchFrom extends Component {
     e.preventDefault();
     console.log('search clicked!');
     const searchValue = this.state.input;
-    // fetch(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?key=${apiKey}&q=${searchValue}`, {
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //   },
-    // })
-    //   .then((res) => {
-    //     const contentType = res.headers.get('content-type')
-    //     console.log(contentType);
-    //     if (contentType.includes('application/xml')) {
-    //       return parseString(res, (err, res) => {
-    //     });
-    //     }
-    //   })
-    //   .then(data => console.dir(data));
+    fetch(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?key=${apiKey}&q=${searchValue}`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      .then(res => res.text())
+      .then((data) => {
+        parseString(data, (err, result) => {
+          const bookResults = result.GoodreadsResponse.search[0].results[0].work;
+
+          console.dir(bookResults);
+        });
+      });
   }
 
   render() {

@@ -5,6 +5,7 @@ const searchResultCleaner = books => (books.map(book => (
     image_url: book.best_book[0].image_url[0],
     avg_rating: book.average_rating[0],
     ratings_count: book.ratings_count[0]._,
+    book_id: book.best_book[0].id[0]._,
   }
 )));
 

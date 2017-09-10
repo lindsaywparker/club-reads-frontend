@@ -11,6 +11,7 @@ const BookCard = ({ book }) => {
         <p>Number of Ratings: {book.ratings_count}</p>
         <p>Description: Hi Im a description</p>
       </div>
+      <a href={`https://www.goodreads.com/book/show/${book.book_id}`} target="_blank">View on Goodreads</a>
       <button onClick={() => console.log('You clicked suggest! Good for you!')}>
         Suggest
       </button>

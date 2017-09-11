@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, userId, clubId }) => {
   this.addBookToDB = (book) => {
     fetch('/api/v1/book', {
       method: 'POST',
@@ -11,8 +11,8 @@ const BookCard = ({ book }) => {
         title: book.title,
         author: book.authors,
         image: book.image_url,
-        user_id: 1,
-        club_id: 1,
+        user_id: userId,
+        club_id: clubId,
         goodreads_id: book.goodreads_id,
       }),
     })

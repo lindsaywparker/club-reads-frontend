@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
-import Header from '../../Components/Header/Header';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoginForm from '../../Components/LoginForm/LoginForm';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 import ClubPage from '../../Components/ClubPage/ClubPage';
 import SearchPage from '../../Components/SearchPage/SearchPage';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 
 class App extends Component {
-  render () {
+  constructor() {
+    super();
+    this.state = {
+      user_id: null,
+      club_id: null,
+    };
+
+    this.getUserId = this.getUserId.bind(this);
+  }
+
+  getUserId(userId, clubId) {
+    this.setState({
+      user_id: userId,
+      club_id: clubId,
+    });
+  }
+
+  render() {
     return (
       <div className="App">
         <Router>
           <section>
             <Route exact path="/" component={LoginForm} />
-            <Route exact path="/signup" component={SignUpForm} />
+            <Route exact path="/signup" render={() => <SignUpForm getUserId={this.getUserId} />} />
             <Route exact path="/clubpage/:club_name" component={ClubPage} />
             <Route exact path="/suggestbook" component={SearchPage} />
           </section>
         </Router>
       </div>
-    )
+    );
   }
 }
 

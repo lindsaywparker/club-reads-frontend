@@ -29,7 +29,7 @@ class App extends Component {
         <Router>
           <section>
             <Route exact path="/" component={LoginForm} />
-            <Route exact path="/signup" render={() => <SignUpForm getUserId={this.getUserId} />} />
+            <Route exact path="/signup" render={({ history }) => <SignUpForm getUserId={this.getUserId} history={history}/>} />
             <Route exact path="/clubpage/:club_name" component={ClubPage} />
             <Route exact path="/suggestbook" component={SearchPage} />
           </section>

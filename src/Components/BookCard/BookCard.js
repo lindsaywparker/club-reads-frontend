@@ -10,13 +10,10 @@ const BookCard = ({ book }) => {
       body: JSON.stringify({
         title: book.title,
         author: book.authors,
-        status: 'suggested',
-        downvotes: '0',
-        upvotes: '0',
         image: book.image_url,
         user_id: 1,
-        ISBN: 123456789,
-        description: 'it was okay',
+        club_id: 1,
+        goodreads_id: book.goodreads_id,
       }),
     })
       .then(res => res.json())

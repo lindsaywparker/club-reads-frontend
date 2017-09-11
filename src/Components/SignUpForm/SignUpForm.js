@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 export default class SignUpForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       input: '',
     };
@@ -26,6 +26,7 @@ export default class SignUpForm extends Component {
       .then(res => res.json())
       .then((data) => {
         if (data.error) throw new Error('A user with this email already exists');
+        this.props.getUserId(data.user.id, data.user.club_id);
         this.props.history.push('/clubpage');
       })
       .catch((data) => {

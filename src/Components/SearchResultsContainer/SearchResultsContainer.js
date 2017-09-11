@@ -2,10 +2,15 @@ import React from 'react';
 import Header from '../Header/Header';
 import BookCard from '../BookCard/BookCard';
 
-const SearchResultsContainer = ({ books }) => (
+const SearchResultsContainer = ({ books, userInfo }) => (
   <div className="search-results-component">
-    { books.map((book, i) =>
-      <BookCard key={i} book={book} />,
+    {books.map(book =>
+      (<BookCard
+        key={book.goodreads_id}
+        book={book}
+        userId={userInfo.user_id}
+        clubId={userInfo.club_id}
+      />),
     )}
   </div>
 );

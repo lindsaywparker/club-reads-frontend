@@ -8,11 +8,11 @@ import BookCard from '../BookCard/BookCard';
 import SearchResultsContainer from '../SearchResultsContainer/SearchResultsContainer';
 
 export default class SearchPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       books: [],
-    }
+    };
 
     this.fetchBooks = this.fetchBooks.bind(this);
   }
@@ -38,7 +38,7 @@ export default class SearchPage extends Component {
         <Header />
         <h2 className="suggest-book">Suggest a book</h2>
         <SearchForm fetchBooks={this.fetchBooks} />
-        <SearchResultsContainer books={this.state.books} />
+        <SearchResultsContainer books={this.state.books} {...this.props} />
       </div>
     );
   }

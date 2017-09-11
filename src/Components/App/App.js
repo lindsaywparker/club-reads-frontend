@@ -15,7 +15,7 @@ class App extends Component {
           <section>
             <Route exact path="/" component={LoginForm} />
             <Route exact path="/signup" component={SignUpForm} />
-            <Route exact path="/clubpage" component={ClubPage} />
+            <Route exact path="/clubpage/:club_name" component={ClubPage} />
             <Route exact path="/suggestbook" component={SearchPage} />
           </section>
         </Router>

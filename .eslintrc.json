@@ -6,7 +6,8 @@
         "import"
     ],
     "rules": {
-      "react/jsx-filename-extension": [0]
+      "react/jsx-filename-extension": [0],
+      "max-len": [0]
     },
     "globals": {
       "document": true,

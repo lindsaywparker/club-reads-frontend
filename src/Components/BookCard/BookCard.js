@@ -14,6 +14,8 @@ const BookCard = ({ book, userId, clubId }) => {
         user_id: userId,
         club_id: clubId,
         goodreads_id: book.goodreads_id,
+        avg_rating: book.avg_rating,
+        ratings_count: book.ratings_count,
       }),
     })
       .then(res => res.json())

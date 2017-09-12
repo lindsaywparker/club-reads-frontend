@@ -22,6 +22,24 @@ const BookCard = ({ book, userId, clubId }) => {
       .then(data => console.log(data)) // TODO: add sucess message to DOM
       .catch(err => console.log(err));
   };
+  
+  this.handleVote = (userId, book, direction) => {
+    console.log(book)
+    fetch('/api/v1/vote', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        direction,
+        user_id: userId,
+        book_id: book.id,
+      })
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+  }
 
   return (
     <div className="book-card-component">

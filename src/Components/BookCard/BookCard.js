@@ -51,7 +51,7 @@ const BookCard = ({ book, userId, clubId }) => {
         <p>Number of Ratings: {book.ratings_count}</p>
         <p>Description: Hi Im a description</p>
       </div>
-      <a href={`https://www.goodreads.com/book/show/${book.book_id}`} target="_blank">View on Goodreads</a>
+      <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${book.goodreads_id}`} target="_blank">View on Goodreads</a>
       <button onClick={() => this.addBookToDB(book)}>
         Suggest
       </button>

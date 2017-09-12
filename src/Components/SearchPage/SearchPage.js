@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { parseString } from 'xml2js';
 import apiKey from '../../api';
 import searchResultCleaner from '../../helpers/searchResultCleaner';
-import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import BookCard from '../BookCard/BookCard';
 import SearchResultsContainer from '../SearchResultsContainer/SearchResultsContainer';
@@ -35,7 +34,6 @@ export default class SearchPage extends Component {
   render() {
     return (
       <div className="search-page-component">
-        <Header />
         <h2 className="suggest-book">Suggest a book</h2>
         <SearchForm fetchBooks={this.fetchBooks} />
         <SearchResultsContainer books={this.state.books} {...this.props} />

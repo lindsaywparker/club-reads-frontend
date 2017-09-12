@@ -9,8 +9,8 @@ const BookCard = ({ book, userId, clubId }) => {
       },
       body: JSON.stringify({
         title: book.title,
-        author: book.authors,
-        image: book.image_url,
+        author: book.author,
+        image: book.image,
         user_id: userId,
         club_id: clubId,
         goodreads_id: book.goodreads_id,
@@ -23,10 +23,10 @@ const BookCard = ({ book, userId, clubId }) => {
 
   return (
     <div className="book-card-component">
-      <img src={book.image_url} alt="Book Cover" />
+      <img src={book.image} alt="Book Cover" />
       <div className="book-info">
         <p>Title: {book.title}</p>
-        <p>Author: {book.authors}</p>
+        <p>Author: {book.author}</p>
         <p>Rating: {book.avg_rating}</p>
         <p>Number of Ratings: {book.ratings_count}</p>
         <p>Description: Hi Im a description</p>

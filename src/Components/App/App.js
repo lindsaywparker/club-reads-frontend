@@ -4,6 +4,7 @@ import LoginForm from '../../Components/LoginForm/LoginForm';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 import ClubPage from '../../Components/ClubPage/ClubPage';
 import SearchPage from '../../Components/SearchPage/SearchPage';
+import Header from '../../Components/Header/Header';
 
 class App extends Component {
   constructor() {
@@ -43,14 +44,22 @@ class App extends Component {
             <Route
               exact
               path="/clubpage/:club_id"
-              render={({ match, history }) =>
-                <ClubPage userInfo={this.state} match={match} history={history} />}
+              render={({ match, history }) => (
+                <div>
+                  <Header clubId={this.state.club_id} />
+                  <ClubPage userInfo={this.state} match={match} history={history} />
+                </div>
+              )}
             />
             <Route
               exact
               path="/suggestbook"
-              render={({ history }) =>
-                <SearchPage userInfo={this.state} history={history} />}
+              render={({ history }) => (
+                <div>
+                  <Header clubId={this.state.club_id} />
+                  <SearchPage userInfo={this.state} history={history} />
+                </div>
+              )}
             />
           </section>
         </Router>

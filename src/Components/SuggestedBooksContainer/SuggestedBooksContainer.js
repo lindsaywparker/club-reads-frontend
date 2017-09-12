@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const SuggestedBooksContainer = ({activeClub}) => {
-  
-  const fetchClub = () => {
-    fetch('/api/v1/club')
+import BookCard from '../../Components/BookCard/BookCard';
+
+export default class SuggestedBooksContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch(`/api/v1/book?club_id=${this.props.clubId}`)
       .then(res => res.json())
-      .then(club => {console.log(club)})
-  };
-  
-  return (
-    <div>
-      <h1 className="suggested-books-container">Suggested Books</h1>
-      <p className="suggestion-instructoins">Vote for which books you would like to read</p>
-      <p className="suggestion-instructoins">Thumbs UP for books you like and thumbs DOWN for books you don't</p>
-      {fetchClub()}
-    </div>
-  )
-}
+      .then(books => this.setState({ books }))
+      .catch(err => console.log({ err }));
+  }
 
-export default SuggestedBooksContainer;
+  render() {
+    return (
+      <div>
+        <h1 className="suggested-books-container">Suggested Books</h1>
+        <p className="suggestion-instructions">
+          Vote for which books you would like to read
+        </p>
+        <p className="suggestion-instructions">
+          Thumbs UP for books you like and thumbs DOWN for books you don't
+        </p>
+        {this.state.books.map(book =>
+          (<BookCard
+            key={book.goodreads_id}
+            book={book}
+            userId={this.props.userId}
+            clubId={this.props.clubId}
+          />),
+        )}
+      </div>
+    );
+  }
+}

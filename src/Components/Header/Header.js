@@ -1,16 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 
-const Header = () => (
+const Header = props => (
   <header className="header-component">
     <h1 className="logo">club<span className="logo-accent">reads</span></h1>
     <nav className="nav-link-container">
-      <a className="nav-link" href="#">Suggest a Book</a>
+      <NavLink to={`/clubpage/${props.clubId}`} className="nav-link" activeClassName="selected">Club Page</NavLink>
+      <NavLink to="/suggestbook" className="nav-link" activeClassName="selected">Suggest a Book</NavLink>
       <a className="nav-link" href="#">Logout</a>
-      <NavLink to='/login'
-               className="nav-link"
-               activeClassName='selected'
-               >Login</NavLink>
+      <NavLink to="/" className="nav-link" activeClassName="selected">Login</NavLink>
     </nav>
   </header>
 );

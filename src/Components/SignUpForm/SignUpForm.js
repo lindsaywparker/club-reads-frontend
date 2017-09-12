@@ -37,7 +37,7 @@ export default class SignUpForm extends Component {
       .then((data) => {
         if (data.error) throw new Error('A user with this email already exists');
         this.props.getUserId(data.user.id, this.state.clubSelection);
-        // this.props.history.push('/clubpage');
+        this.props.history.push(`/clubpage/${data.user.club_id}`);
       })
       .catch((data) => {
         document.querySelector('.msg-to-user').innerHTML = data;

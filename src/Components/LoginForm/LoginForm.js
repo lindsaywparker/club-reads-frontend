@@ -28,8 +28,8 @@ export default class LoginForm extends Component {
         if (data.error) {
           document.querySelector('.msg-to-user').innerHTML = data.error;
         } else {
-          this.props.getUserId(data.user.id, this.state.clubSelection);
-          this.props.history.push('/clubpage');
+          this.props.getUserId(data.user.id, data.user.club_id);
+          this.props.history.push(`/clubpage/${data.user.club_id}`);
         }
       });
   }

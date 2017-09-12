@@ -55,6 +55,10 @@ const BookCard = ({ book, userId, clubId }) => {
       <button onClick={() => this.addBookToDB(book)}>
         Suggest
       </button>
+      <div>
+        <input type="button" value="down" className="down-vote" onClick={(e) => this.handleVote(userId, book, e.target.value)} />
+        <input type="button" value="up" className="up-vote" onClick={(e) => this.handleVote(userId, book, e.target.value)} />
+      </div>
     </div>
   );
 };

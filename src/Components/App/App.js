@@ -28,7 +28,12 @@ class App extends Component {
       <div className="App">
         <Router>
           <section>
-            <Route exact path="/" component={LoginForm} />
+            <Route
+              exact
+              path="/"
+              render={({ history }) =>
+                <LoginForm getUserId={this.getUserId} history={history} />}
+            />
             <Route
               exact
               path="/signup"

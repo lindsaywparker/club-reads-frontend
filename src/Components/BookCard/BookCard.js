@@ -22,6 +22,24 @@ const BookCard = ({ book, userId, clubId }) => {
       .then(data => console.log(data)) // TODO: add sucess message to DOM
       .catch(err => console.log(err));
   };
+  
+  this.handleVote = (userId, book, direction) => {
+    console.log(book)
+    fetch('/api/v1/vote', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        direction,
+        user_id: userId,
+        book_id: book.id,
+      })
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+  }
 
   return (
     <div className="book-card-component">
@@ -33,10 +51,14 @@ const BookCard = ({ book, userId, clubId }) => {
         <p>Number of Ratings: {book.ratings_count}</p>
         <p>Description: Hi Im a description</p>
       </div>
-      <a href={`https://www.goodreads.com/book/show/${book.book_id}`} target="_blank">View on Goodreads</a>
+      <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${book.goodreads_id}`} target="_blank">View on Goodreads</a>
       <button onClick={() => this.addBookToDB(book)}>
         Suggest
       </button>
+      <div>
+        <input type="button" value="down" className="down-vote" onClick={(e) => this.handleVote(userId, book, e.target.value)} />
+        <input type="button" value="up" className="up-vote" onClick={(e) => this.handleVote(userId, book, e.target.value)} />
+      </div>
     </div>
   );
 };

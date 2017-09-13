@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookCard = ({ book, userId, clubId, pathname }) => {
+const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
   this.addBookToDB = (book) => {
     fetch('/api/v1/book', {
       method: 'POST',
@@ -69,8 +69,8 @@ const BookCard = ({ book, userId, clubId, pathname }) => {
       </div>
       <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${book.goodreads_id}`} target="_blank">View on Goodreads</a>
       {(pathname === '/suggestbook') &&
-        <button onClick={() => this.addBookToDB(book)}>
-          Suggest
+        <button className={suggested ? 'added' : null} onClick={() => this.addBookToDB(book)}>
+          {suggested ? 'Added!' : 'Suggest'}
         </button>}
       <div>
         {(pathname.startsWith('/clubpage/')) && userId &&

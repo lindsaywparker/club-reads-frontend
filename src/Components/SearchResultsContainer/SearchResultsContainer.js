@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Header/Header';
 import BookCard from '../BookCard/BookCard';
 
-const SearchResultsContainer = ({ books, userInfo }) => (
+const SearchResultsContainer = ({ books, userInfo, pathname }) => (
   <div className="search-results-component">
     {books.map(book =>
       (<BookCard
@@ -10,6 +10,7 @@ const SearchResultsContainer = ({ books, userInfo }) => (
         book={book}
         userId={userInfo.user_id}
         clubId={userInfo.club_id}
+        pathname={pathname}
       />),
     )}
   </div>

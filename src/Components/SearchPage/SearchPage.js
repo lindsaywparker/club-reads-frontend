@@ -36,7 +36,11 @@ export default class SearchPage extends Component {
       <div className="search-page-component">
         <h2 className="suggest-book">Suggest a book</h2>
         <SearchForm fetchBooks={this.fetchBooks} />
-        <SearchResultsContainer books={this.state.books} {...this.props} />
+        <SearchResultsContainer
+          books={this.state.books}
+          pathname={this.props.history.location.pathname}
+          {...this.props}
+        />
       </div>
     );
   }

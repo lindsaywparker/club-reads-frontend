@@ -33,6 +33,7 @@ export default class SuggestedBooksContainer extends Component {
             book={book}
             userId={this.props.userId}
             clubId={this.props.clubId}
+            pathname={this.props.pathname}
           />),
         )}
       </div>

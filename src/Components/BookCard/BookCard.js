@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookCard = ({ book, userId, clubId, pathname }) => {
+const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
   this.addBookToDB = (book) => {
     fetch('/api/v1/book', {
       method: 'POST',
@@ -37,8 +37,7 @@ const BookCard = ({ book, userId, clubId, pathname }) => {
     })
       .then(res => res.json())
       .then((res) => {
-        console.log('response',res)
-        if(res.error) throw new Error(res.error.detail);
+        if (res.error) throw new Error(res.error.detail);
         fetch('/api/v1/book', {
           method: 'PATCH',
           headers: {
@@ -51,10 +50,15 @@ const BookCard = ({ book, userId, clubId, pathname }) => {
         })
           .then(res => res.json())
           .then(data => console.log(data))
-          .catch(err => console.log(err))
-        })
+          .catch(err => console.log(err));
+      })
       .catch(err => console.log(err));
+  };
 
+  this.handleSuggest = (e, book) => {
+    this.addBookToDB(book);
+    e.target.classList.add('added');
+    e.target.textContent = 'Added!';
   };
 
   return (
@@ -69,8 +73,8 @@ const BookCard = ({ book, userId, clubId, pathname }) => {
       </div>
       <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${book.goodreads_id}`} target="_blank">View on Goodreads</a>
       {(pathname === '/suggestbook') &&
-        <button onClick={() => this.addBookToDB(book)}>
-          Suggest
+        <button className={suggested ? 'added' : null} onClick={e => this.handleSuggest(e, book)}>
+          {suggested ? 'Added!' : 'Suggest'}
         </button>}
       <div>
         {(pathname.startsWith('/clubpage/')) && userId &&

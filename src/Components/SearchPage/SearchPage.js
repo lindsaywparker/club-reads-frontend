@@ -11,6 +11,7 @@ export default class SearchPage extends Component {
     super(props);
     this.state = {
       books: [],
+      suggestedBooks: [],
     };
 
     this.fetchBooks = this.fetchBooks.bind(this);
@@ -24,6 +25,13 @@ export default class SearchPage extends Component {
     })
       .then(res => res.text())
       .then((data) => {
+
+        fetch(`/api/v1/book?club_id=${this.props.userInfo.club_id}`)
+          .then(data => data.json())
+          .then(suggestedBooks => {
+            this.setState({ suggestedBooks });
+          })
+
         parseString(data, (err, result) => {
           const bookResults = searchResultCleaner(result.GoodreadsResponse.search[0].results[0].work);
           this.setState({ books: bookResults });
@@ -38,6 +46,7 @@ export default class SearchPage extends Component {
         <SearchForm fetchBooks={this.fetchBooks} />
         <SearchResultsContainer
           books={this.state.books}
+          suggestedBooks={this.state.suggestedBooks}
           pathname={this.props.history.location.pathname}
           {...this.props}
         />

@@ -7,7 +7,8 @@
     ],
     "rules": {
       "react/jsx-filename-extension": [0],
-      "max-len": [0]
+      "max-len": [0],
+      "no-shadow": [0]
     },
     "globals": {
       "document": true,

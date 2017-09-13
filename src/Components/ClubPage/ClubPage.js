@@ -8,6 +8,7 @@ const ClubPage = ({ userInfo, match, history }) => (
     <SuggestedBooksContainer
       userId={userInfo.user_id}
       clubId={parseInt(match.params.club_id, 10)}
+      pathname={history.location.pathname}
     />
   </div>
 );

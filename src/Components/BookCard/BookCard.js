@@ -57,6 +57,12 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
 
   };
 
+  this.handleSuggest = (e, book) => {
+    this.addBookToDB(book);
+    e.target.classList.add('added');
+    e.target.textContent = 'Added!';
+  };
+
   return (
     <div className="book-card-component">
       <img src={book.image} alt="Book Cover" />
@@ -69,7 +75,7 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
       </div>
       <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${book.goodreads_id}`} target="_blank">View on Goodreads</a>
       {(pathname === '/suggestbook') &&
-        <button className={suggested ? 'added' : null} onClick={() => this.addBookToDB(book)}>
+        <button className={suggested ? 'added' : null} onClick={e => this.handleSuggest(e, book)}>
           {suggested ? 'Added!' : 'Suggest'}
         </button>}
       <div>

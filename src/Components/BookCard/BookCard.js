@@ -37,8 +37,7 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
     })
       .then(res => res.json())
       .then((res) => {
-        console.log('response',res)
-        if(res.error) throw new Error(res.error.detail);
+        if (res.error) throw new Error(res.error.detail);
         fetch('/api/v1/book', {
           method: 'PATCH',
           headers: {
@@ -51,10 +50,9 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
         })
           .then(res => res.json())
           .then(data => console.log(data))
-          .catch(err => console.log(err))
-        })
+          .catch(err => console.log(err));
+      })
       .catch(err => console.log(err));
-
   };
 
   this.handleSuggest = (e, book) => {

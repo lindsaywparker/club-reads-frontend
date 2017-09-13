@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookCard = ({ book, userId, clubId }) => {
+const BookCard = ({ book, userId, clubId, pathname }) => {
   this.addBookToDB = (book) => {
     fetch('/api/v1/book', {
       method: 'POST',
@@ -19,12 +19,11 @@ const BookCard = ({ book, userId, clubId }) => {
       }),
     })
       .then(res => res.json())
-      .then(data => console.log(data)) // TODO: add sucess message to DOM
+      .then(data => console.log(data))
       .catch(err => console.log(err));
   };
-  
+
   this.handleVote = (userId, book, direction) => {
-    console.log(book)
     fetch('/api/v1/vote', {
       method: 'POST',
       headers: {
@@ -34,12 +33,12 @@ const BookCard = ({ book, userId, clubId }) => {
         direction,
         user_id: userId,
         book_id: book.id,
-      })
+      }),
     })
       .then(res => res.json())
       .then(data => console.log(data))
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   return (
     <div className="book-card-component">
@@ -52,12 +51,25 @@ const BookCard = ({ book, userId, clubId }) => {
         <p>Description: Hi Im a description</p>
       </div>
       <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${book.goodreads_id}`} target="_blank">View on Goodreads</a>
-      <button onClick={() => this.addBookToDB(book)}>
-        Suggest
-      </button>
+      {(pathname === '/suggestbook') &&
+        <button onClick={() => this.addBookToDB(book)}>
+          Suggest
+        </button>}
       <div>
-        <input type="button" value="down" className="down-vote" onClick={(e) => this.handleVote(userId, book, e.target.value)} />
-        <input type="button" value="up" className="up-vote" onClick={(e) => this.handleVote(userId, book, e.target.value)} />
+        {(pathname.startsWith('/clubpage/')) && userId &&
+          <input
+            type="button"
+            value="down"
+            className="down-vote"
+            onClick={e => this.handleVote(userId, book, e.target.value)}
+          />}
+        {(pathname.startsWith('/clubpage/')) && userId &&
+          <input
+            type="button"
+            value="up"
+            className="up-vote"
+            onClick={e => this.handleVote(userId, book, e.target.value)}
+          />}
       </div>
     </div>
   );

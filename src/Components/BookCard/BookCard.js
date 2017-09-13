@@ -36,8 +36,22 @@ const BookCard = ({ book, userId, clubId, pathname }) => {
       }),
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(() =>
+        fetch('/api/v1/book', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            direction,
+            book_id: book.id,
+          }),
+        })
+          .then(res => res.json())
+          .then(data => console.log(data))
+          .catch(err => console.log(err)))
       .catch(err => console.log(err));
+    
   };
 
   return (

@@ -13,6 +13,7 @@ export default class SearchForm extends Component {
     e.preventDefault();
     const searchValue = this.state.input;
     this.props.fetchBooks(searchValue);
+    this.setState({ input: '' });
   }
 
   render() {

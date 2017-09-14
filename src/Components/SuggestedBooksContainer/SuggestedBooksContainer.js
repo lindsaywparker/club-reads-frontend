@@ -28,15 +28,17 @@ export default class SuggestedBooksContainer extends Component {
       />));
 
     return (
-      <div>
-        <h1 className="suggested-books-container">Suggested Books</h1>
+      <div className="suggested-books-container">
+        <h1>Suggested Books</h1>
         <p className="suggestion-instructions">
           Vote for which books you would like to read
         </p>
         <p className="suggestion-instructions">
           Thumbs UP for books you like and thumbs DOWN for books you don't
         </p>
-        {bookResults}
+        <div className="suggested-books">
+          {bookResults}
+        </div>
       </div>
     );
   }

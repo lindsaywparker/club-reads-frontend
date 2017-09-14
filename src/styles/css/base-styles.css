@@ -1,26 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
 * {
   box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: helvetica, sans-serif;
+  font-family: Lato, helvetica, sans-serif;
   text-align: center; }
 
 button {
   height: 35px;
-  border: 1px solid #9e9d9e;
-  background-color: #cdc08b;
+  border: 1px solid #9E9D9E;
+  background-color: #CDC08B;
   font-size: 14px;
   font-weight: 500; }
 
 .logo {
   margin: 0;
-  margin-bottom: 10px;
-  color: #311e11;
+  color: #311E11;
   font-size: 60px;
   font-weight: 300; }
   .logo .logo-accent {
-    color: #cdc08b;
+    color: #CDC08B;
     font-weight: 500; }
 
 form {
@@ -34,7 +34,7 @@ form {
   width: 100%;
   height: 35px;
   padding: 5px;
-  border: 1px solid #9e9d9e;
+  border: 1px solid #9E9D9E;
   border-radius: 3px;
   margin-bottom: 10px;
   font-size: 14px; }
@@ -49,28 +49,123 @@ form {
 .signup-navlink {
   height: 35px;
   padding: 8px;
-  border: 1px solid #9e9d9e;
+  border: 1px solid #9E9D9E;
   border-radius: 3px;
-  background-color: #f2f0e7;
-  color: #cdc08b;
+  background-color: #F2F0E7;
+  color: #CDC08B;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none; }
 
 .header-component {
   display: flex;
-  flex-direction: column;
-  background-color: #f2f0e7;
+  background-color: #F2F0E7;
   padding: 10px; }
   .header-component .logo {
     font-size: 40px; }
   .header-component .nav-link-container {
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+    align-items: center;
+    margin-left: auto; }
     .header-component .nav-link-container .nav-link {
       margin: 0 10px;
       text-decoration: none;
-      color: #311e11;
-      background-color: #cdc08b;
+      color: #311E11;
+      background-color: #CDC08B;
       border-radius: 4px;
-      padding: 5px; }
+      padding: 5px;
+      height: 30px; }
+
+.book-card-component {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAFAFA;
+  border-radius: 3px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: left;
+  padding-left: 140px;
+  font-weight: 300; }
+  .book-card-component p {
+    margin: 5px 0; }
+  .book-card-component .book-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0; }
+  .book-card-component .book-author {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 4px 0 20px; }
+  .book-card-component .book-cover {
+    position: absolute;
+    top: -20px;
+    left: 20px; }
+  .book-card-component .vote-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; }
+  .book-card-component a {
+    margin-bottom: 20px;
+    color: #837a57; }
+  .book-card-component img {
+    width: 100px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); }
+  .book-card-component button {
+    margin-top: auto;
+    transition: 200ms; }
+    .book-card-component button:hover {
+      cursor: pointer;
+      background-color: #e6ce6c; }
+    .book-card-component button.added {
+      background-color: chartreuse; }
+
+.search-page-component {
+  padding: 20px; }
+
+.search-results-component {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 50px;
+  margin-top: 50px; }
+
+.suggested-books-container {
+  padding: 20px; }
+
+.suggested-books {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 50px;
+  margin-top: 50px; }
+
+@media screen and (max-width: 1100px) {
+  .search-results-component,
+  .suggested-books {
+    grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 700px) {
+  .search-results-component,
+  .suggested-books {
+    grid-template-columns: repeat(1, 1fr); }
+
+  .header-component {
+    flex-direction: column; }
+    .header-component .logo {
+      margin-bottom: 10px; }
+    .header-component .nav-link-container {
+      margin: 0; }
+      .header-component .nav-link-container .nav-link {
+        margin: 0 6px; } }
+@media screen and (max-width: 450px) {
+  .book-card-component {
+    padding: 175px 20px 20px;
+    text-align: center; }
+    .book-card-component .book-cover {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translate(-50%); } }
+
+/*# sourceMappingURL=base-styles.css.map */

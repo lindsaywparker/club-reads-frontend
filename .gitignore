@@ -22,3 +22,5 @@ yarn-error.log*
 
 # SCSS
 .sass-cache
+
+api.js

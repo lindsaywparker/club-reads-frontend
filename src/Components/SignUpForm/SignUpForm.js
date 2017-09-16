@@ -49,32 +49,31 @@ export default class SignUpForm extends Component {
       <div className="signup-component">
         <h1 className="logo">club<span className="logo-accent">reads</span></h1>
         <form className="signup-form" onSubmit={e => this.handleSubmit(e)}>
+          <label htmlFor="signup-email-input">E-Mail Address:</label>
           <input
+            id="signup-email-input"
             className="signup-email-input"
             type="email"
             required
             value={this.state.input}
-            placeholder="email"
+            placeholder="E-Mail"
             onChange={event => this.setState({ input: event.target.value })}
           />
-          <div className="dropdown-container">
-            <label htmlFor="club-dropdown">
-              Club:
-              <select
-                name="club-dropdown"
-                id="club-dropdown"
-                defaultValue="Select a club..."
-                onChange={event => this.setState({ clubSelection: parseInt(event.target.value) })}
-              >
-                <option disabled>Select a club...</option>
-                {this.state.clubs.map(club => <option key={club.id} value={club.id}>{club.name}</option>)}
-              </select>
-            </label>
-          </div>
+          <label htmlFor="club-dropdown">Club:</label>
+          <select
+            name="club-dropdown"
+            id="club-dropdown"
+            defaultValue="Select a club..."
+            onChange={event => this.setState({ clubSelection: parseInt(event.target.value) })}
+          >
+            <option disabled>Select a club...</option>
+            {this.state.clubs.map(club => <option key={club.id} value={club.id}>{club.name}</option>)}
+          </select>
+
           <input
             type="submit"
-            className="signup-btn"
-            value="sign up"
+            className="form-btn signup-submit-btn"
+            value="Sign Up"
           />
         </form>
         <p className="msg-to-user"></p>

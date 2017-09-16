@@ -39,21 +39,23 @@ export default class LoginForm extends Component {
       <div className="login-component">
         <h1 className="logo">club<span className="logo-accent">reads</span></h1>
         <form className="login-form" onSubmit={e => this.handleLogin(e)}>
+          <label htmlFor="login-email-input">E-Mail Address:</label>
           <input
+            id="login-email-input"
             className="login-email-input"
             type="email"
             required
             value={this.state.input}
-            placeholder="email"
+            placeholder="E-Mail"
             onChange={event => this.setState({ input: event.target.value })}
           />
           <container className="login-btns">
             <input
+              className="form-btn login-btn"
               type="submit"
-              className="login-btn"
-              value="login"
+              value="Login"
             />
-            <NavLink to="/signup">sign up</NavLink>
+            <NavLink className="form-btn signup-btn" to="/signup">Sign Up</NavLink>
           </container>
           <div className="msg-to-user"></div>
         </form>

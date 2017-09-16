@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { parseString } from 'xml2js';
-
-import apiKey from '../../api';
 import searchResultCleaner from '../../helpers/searchResultCleaner';
 import SearchForm from '../SearchForm/SearchForm';
 import SearchResultsContainer from '../SearchResultsContainer/SearchResultsContainer';
@@ -19,8 +17,7 @@ export default class SearchPage extends Component {
   }
 
   fetchBooks(searchValue) {
-    this.setState({ loading: true });
-    fetch(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?key=${apiKey}&q=${searchValue}`, {
+    fetch(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?key=bIznxnF3I7kjliNKA5J7rw&q=${searchValue}`, {
       headers: {
         'Access-Control-Allow-Origin': '*',
       },

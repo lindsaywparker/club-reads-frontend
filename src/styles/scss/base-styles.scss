@@ -28,7 +28,7 @@ button {
 .logo {
   margin: 0;
   color: $primaryDarkColor;
-  font-size: 60px;
+  font-size: 70px;
   font-weight: 300;
 
   .logo-accent {
@@ -40,16 +40,30 @@ button {
 // LOGIN & SIGNUP STYLES ////////////////////////////
 /////////////////////////////////////////////////////
 
+.login-component,
+.signup-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20% auto 0;
+}
+
 form {
-  width: 90%;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+
+  label {
+    align-self: flex-start;
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
 }
 
-.login-component {
-  padding-top: 100px;
-}
-
-.login-email-input {
+.login-email-input,
+.signup-email-input {
   width: 100%;
   height: 35px;
   padding: 5px;
@@ -62,23 +76,44 @@ form {
 .login-btns {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+
+  .login-btn {
+    background-color: $accentColor;
+  }
 }
 
-.login-btn, .signup-navlink {
-  width: 45%;
-}
-
-.signup-navlink {
-  height: 35px;
-  padding: 8px;
-  border: 1px solid $borderColor;
-  border-radius: 3px;
-  background-color: $primaryLightColor;
-  color: $accentColor;
-  font-size: 14px;
-  font-weight: 500;
+.form-btn {
+  border: 1px solid $accentColor;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 4px;
   text-decoration: none;
+  color: $primaryDarkColor;
+  background-color: $primaryLightColor;
+  transition: 200ms;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $activeColor;
+  }
 }
+
+.login-btns > * {
+  width: 48%;
+}
+
+#club-dropdown {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 35px;
+}
+
+.signup-submit-btn {
+  width: 100%;
+  height: 35px;
+}
+
 
 // HEADER STYLES ////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -171,7 +206,7 @@ form {
 
     &:hover {
       cursor: pointer;
-      background-color: #e6ce6c;
+      background-color: $activeColor;
     }
 
     &.added {
@@ -184,8 +219,45 @@ form {
 /////////////////////////////////////////////////////
 
 .search-page-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
 }
+
+.search-form-component {
+  .search-form {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    .search-input {
+      width: 100%;
+      height: 35px;
+      padding: 5px;
+      border: 1px solid $primaryDarkColor;
+      border-right-width: 0;
+      border-radius: 3px 0 0 3px;
+      font-size: 14px;
+    }
+
+    .search-btn {
+      display: block;
+      height: 35px;
+      border: 1px solid $primaryDarkColor;
+      border-radius: 0 3px 3px 0;
+      background-color: $accentColor;
+      font-size: 16px;
+      transition: 200ms;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $activeColor;
+      }
+    }
+  }
+}
+
 
 // SEARCH RESULTS STYLES ////////////////////////////
 /////////////////////////////////////////////////////

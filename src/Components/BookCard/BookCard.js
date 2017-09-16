@@ -63,35 +63,36 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
 
   return (
     <div className="book-card-component">
-      <img src={book.image} alt="Book Cover" />
+      <div className="book-cover">
+        <img src={book.image} alt="Book Cover" />
+        <div className="vote-btns">
+          {(pathname.startsWith('/clubpage/')) && userId &&
+            <input
+              type="button"
+              value="down"
+              className="down-vote"
+              onClick={e => this.handleVote(userId, book, e.target.value)}
+            />}
+          {(pathname.startsWith('/clubpage/')) && userId &&
+            <input
+              type="button"
+              value="up"
+              className="up-vote"
+              onClick={e => this.handleVote(userId, book, e.target.value)}
+            />}
+        </div>
+      </div>
       <div className="book-info">
-        <p>Title: {book.title}</p>
-        <p>Author: {book.author}</p>
-        <p>Rating: {book.avg_rating}</p>
-        <p>Number of Ratings: {book.ratings_count}</p>
-        <p>Description: Hi Im a description</p>
+        <p className="book-title">{book.title}</p>
+        <p className="book-author">by {book.author}</p>
+        <p className="book-rating">Rating: {book.avg_rating}</p>
+        <p className="book-rating-count">Number of Ratings: {book.ratings_count}</p>
       </div>
       <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${book.goodreads_id}`} target="_blank">View on Goodreads</a>
       {(pathname === '/suggestbook') &&
         <button className={suggested ? 'added' : null} onClick={e => this.handleSuggest(e, book)}>
           {suggested ? 'Added!' : 'Suggest'}
         </button>}
-      <div>
-        {(pathname.startsWith('/clubpage/')) && userId &&
-          <input
-            type="button"
-            value="down"
-            className="down-vote"
-            onClick={e => this.handleVote(userId, book, e.target.value)}
-          />}
-        {(pathname.startsWith('/clubpage/')) && userId &&
-          <input
-            type="button"
-            value="up"
-            className="up-vote"
-            onClick={e => this.handleVote(userId, book, e.target.value)}
-          />}
-      </div>
     </div>
   );
 };

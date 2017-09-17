@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import scheduler from 'node-schedule';
+
 import LoginForm from '../../Components/LoginForm/LoginForm';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 import ClubPage from '../../Components/ClubPage/ClubPage';
@@ -20,6 +22,14 @@ class App extends Component {
     this.updateBookSchedule = this.updateBookSchedule.bind(this);
   }
 
+  componentDidMount() {
+    // const updateTimer = scheduler.scheduleJob('* * 1 * *', () => {
+    const updateTimer = scheduler.scheduleJob('*/20 * * * * *', () => {
+      this.updateBookSchedule();
+      console.log('Current book updated!');
+    });
+  }
+
   getUserId(userId, clubId) {
     this.setState({
       user_id: userId,
@@ -28,6 +38,7 @@ class App extends Component {
   }
 
   updateBookSchedule() {
+    console.log(this.state.currentBook);
     const read = [];
     let suggested = null;
 

@@ -12,7 +12,7 @@ export default class SignUpForm extends Component {
   }
 
   componentDidMount() {
-    fetch('https://clubreads-api.herokuapp.com/api/v1/club')
+    fetch('/api/v1/club')
       .then(res => res.json())
       .then(clubs => this.setState({ clubs }))
       .catch(err => console.log({ err }));

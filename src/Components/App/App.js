@@ -12,9 +12,12 @@ class App extends Component {
     this.state = {
       user_id: null,
       club_id: null,
+      readBooks: null,
+      currentBook: null,
     };
 
     this.getUserId = this.getUserId.bind(this);
+    this.updateBookSchedule = this.updateBookSchedule.bind(this);
   }
 
   getUserId(userId, clubId) {

@@ -51,6 +51,17 @@ class App extends Component {
                 suggested = Object.assign({}, book);
               }
             });
+            fetch(`/api/v1/book?id=${suggested.id}`, {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                newStatus: 'reading',
+              }),
+            })
+              .then(data => console.log(data))
+              .catch(err => console.log(err));
             this.setState({
               readBooks: read,
               currentBook: suggested,

@@ -27,6 +27,40 @@ class App extends Component {
     });
   }
 
+  updateBookSchedule() {
+    const read = [];
+    let suggested = null;
+
+    fetch('/api/v1/book?status=reading', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        newStatus: 'read',
+      }),
+    })
+      .then(() => {
+        fetch(`/api/v1/book?club_id=${this.state.club_id}`)
+          .then(res => res.json())
+          .then((books) => {
+            books.forEach((book) => {
+              if (book.status === 'read') {
+                read.push(book);
+              } else if (!suggested || book.upvotes > suggested.upvotes) {
+                suggested = Object.assign({}, book);
+              }
+            });
+            this.setState({
+              readBooks: read,
+              currentBook: suggested,
+            });
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="App">

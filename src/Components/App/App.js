@@ -38,7 +38,6 @@ class App extends Component {
   }
 
   updateBookSchedule() {
-    console.log(this.state.currentBook);
     const read = [];
     let suggested = null;
 
@@ -49,6 +48,7 @@ class App extends Component {
       },
       body: JSON.stringify({
         newStatus: 'read',
+        newUpdatedAt: new Date(),
       }),
     })
       .then(() => {
@@ -69,6 +69,7 @@ class App extends Component {
               },
               body: JSON.stringify({
                 newStatus: 'reading',
+                newUpdatedAt: new Date(),
               }),
             })
               .then(data => console.log(data))

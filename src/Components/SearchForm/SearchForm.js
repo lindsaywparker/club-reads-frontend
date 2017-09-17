@@ -25,13 +25,13 @@ export default class SearchForm extends Component {
             type="text"
             required
             value={this.state.input}
-            placeholder="search"
+            placeholder="Title / Author / ISBN"
             onChange={event => this.setState({ input: event.target.value })}
           />
           <input
             type="submit"
             className="search-btn"
-            value="search"
+            value="Search"
           />
         </form>
       </div>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 export default class SignUpForm extends Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       input: '',

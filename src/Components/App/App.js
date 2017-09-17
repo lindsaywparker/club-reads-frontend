@@ -107,7 +107,7 @@ class App extends Component {
               render={({ match, history }) => (
                 <div>
                   <Header clubId={this.state.club_id || ''} getUserId={this.getUserId} history={history} />
-                  <ClubPage userInfo={this.state} match={match} history={history} />
+                  <ClubPage readBooks={this.state.readBooks} currentBook={this.state.currentBook} userInfo={this.state} match={match} history={history} />
                 </div>
               )}
             />

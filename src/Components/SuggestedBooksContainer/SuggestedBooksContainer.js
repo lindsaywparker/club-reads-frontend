@@ -14,7 +14,8 @@ export default class SuggestedBooksContainer extends Component {
     fetch(`/api/v1/book?club_id=${this.props.clubId}`)
       .then(res => res.json())
       .then((books) => {
-        const suggestedBooks = books.filter(book => book.status === 'suggested');
+        const suggestedBooks = books.filter(book => book.status === 'suggested')
+          .sort((a, b) => b.upvotes - a.upvotes);
         this.setState({ suggestedBooks });
       })
       .catch(err => console.log({ err }));

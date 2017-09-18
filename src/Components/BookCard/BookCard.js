@@ -13,6 +13,7 @@ class BookCard extends Component {
     this.handleSuggest = this.handleSuggest.bind(this);
   }
 
+  addBookToDB(book) {
     fetch('/api/v1/book', {
       method: 'POST',
       headers: {
@@ -22,8 +23,8 @@ class BookCard extends Component {
         title: book.title,
         author: book.author,
         image: book.image,
-        user_id: userId,
-        club_id: clubId,
+        user_id: this.props.userId,
+        club_id: this.props.clubId,
         goodreads_id: book.goodreads_id,
         avg_rating: book.avg_rating,
         ratings_count: book.ratings_count,

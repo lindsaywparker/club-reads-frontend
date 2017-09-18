@@ -1,7 +1,18 @@
-import React from 'react';
+/* eslint-disable class-methods-use-this */
+import React, {Component} from 'react';
 
-const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
-  this.addBookToDB = (book) => {
+class BookCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      upVotes: props.book.upvotes,
+      downVotes: props.book.downvotes,
+    };
+    this.addBookToDB = this.addBookToDB.bind(this);
+    this.handleVote = this.handleVote.bind(this);
+    this.handleSuggest = this.handleSuggest.bind(this);
+  }
+
     fetch('/api/v1/book', {
       method: 'POST',
       headers: {

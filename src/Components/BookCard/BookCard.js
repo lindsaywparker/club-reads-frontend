@@ -59,7 +59,11 @@ class BookCard extends Component {
             direction,
           }),
         })
-          .then(data => console.log(data))
+          .then(() => {
+            this.setState({
+              [`${direction}Votes`]: this.state[`${direction}Votes`] + 1
+            })
+          })
           .catch(err => console.log(err));
       })
       .catch(err => console.log(err));

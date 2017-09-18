@@ -23,6 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log(process.env);
     const updateTimer = scheduler.scheduleJob('* * 1 * *', () => {
       this.updateBookSchedule();
       console.log('Current book updated!');

@@ -12,6 +12,8 @@ export default class SignUpForm extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.apiUrl);
+
     fetch(`${this.props.apiUrl}/api/v1/club`)
       .then(res => res.json())
       .then(clubs => this.setState({ clubs }))
@@ -22,6 +24,8 @@ export default class SignUpForm extends Component {
     e.preventDefault();
 
     const email = this.state.input;
+    console.log(this.props.apiUrl);
+
     fetch(`${this.props.apiUrl}/api/v1/user/signup`, {
       method: 'POST',
       headers: {

@@ -11,6 +11,7 @@ export default class SuggestedBooksContainer extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.apiUrl);
     fetch(`${this.props.apiUrl}/api/v1/book?club_id=${this.props.clubId}`)
       .then(res => res.json())
       .then((books) => {

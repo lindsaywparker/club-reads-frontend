@@ -14,6 +14,8 @@ export default class LoginForm extends Component {
     e.preventDefault();
     const email = this.state.input;
     // post fetch request with email
+    console.log(this.props.apiUrl);
+
     fetch(`${this.props.apiUrl}/api/v1/user/login`, {
       method: 'POST',
       headers: {

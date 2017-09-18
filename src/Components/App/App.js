@@ -16,7 +16,7 @@ class App extends Component {
       club_id: null,
       readBooks: [],
       currentBook: {},
-      apiUrl: '',
+      apiUrl: 'google.com',
     };
 
     this.getUserId = this.getUserId.bind(this);

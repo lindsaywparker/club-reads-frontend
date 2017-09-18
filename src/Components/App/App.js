@@ -16,10 +16,16 @@ class App extends Component {
       club_id: null,
       readBooks: [],
       currentBook: {},
+      apiUrl: null,
     };
 
     this.getUserId = this.getUserId.bind(this);
     this.updateBookSchedule = this.updateBookSchedule.bind(this);
+  }
+
+  componentWillMount() {
+    const apiUrl = process.env.NODE_ENV === 'production' ? 'https://clubreads-api.herokuapp.com' : '';
+    this.setState({ apiUrl });
   }
 
   componentDidMount() {
@@ -30,7 +36,8 @@ class App extends Component {
   }
 
   getUserId(userId, clubId) {
-    fetch(`/api/v1/book?club_id=${clubId}`)
+
+    fetch(`${this.state.apiUrl}/api/v1/book?club_id=${clubId}`)
       .then(data => data.json())
       .then((books) => {
         const reading = books.filter(book => book.status === 'reading');
@@ -51,7 +58,7 @@ class App extends Component {
     const read = [];
     let suggested = null;
 
-    fetch('/api/v1/book?status=reading', {
+    fetch(`${this.state.apiUrl}/api/v1/book?status=reading`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -62,7 +69,7 @@ class App extends Component {
       }),
     })
       .then(() => {
-        fetch(`/api/v1/book?club_id=${this.state.club_id}`)
+        fetch(`${this.state.apiUrl}/api/v1/book?club_id=${this.state.club_id}`)
           .then(res => res.json())
           .then((books) => {
             books.forEach((book) => {
@@ -72,7 +79,7 @@ class App extends Component {
                 suggested = Object.assign({}, book);
               }
             });
-            fetch(`/api/v1/book?id=${suggested.id}`, {
+            fetch(`${this.state.apiUrl}/api/v1/book?id=${suggested.id}`, {
               method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json',
@@ -103,13 +110,13 @@ class App extends Component {
               exact
               path="/"
               render={({ history }) =>
-                <LoginForm getUserId={this.getUserId} history={history} />}
+                <LoginForm getUserId={this.getUserId} history={history} apiUrl={this.state.apiUrl} />}
             />
             <Route
               exact
               path="/signup"
               render={({ history }) =>
-                <SignUpForm getUserId={this.getUserId} history={history} />}
+                <SignUpForm getUserId={this.getUserId} history={history} apiUrl={this.state.apiUrl} />}
             />
             <Route
               exact
@@ -117,7 +124,7 @@ class App extends Component {
               render={({ match, history }) => (
                 <div>
                   <Header clubId={this.state.club_id || ''} getUserId={this.getUserId} history={history} />
-                  <ClubPage readBooks={this.state.readBooks} currentBook={this.state.currentBook} userInfo={this.state} match={match} history={history} />
+                  <ClubPage readBooks={this.state.readBooks} currentBook={this.state.currentBook} userInfo={this.state} match={match} history={history} apiUrl={this.state.apiUrl} />
                 </div>
               )}
             />
@@ -128,7 +135,7 @@ class App extends Component {
                 this.state.club_id ?
                   <div>
                     <Header clubId={this.state.club_id || ''} getUserId={this.getUserId} history={history} />
-                    <SearchPage userInfo={this.state} history={history} />
+                    <SearchPage userInfo={this.state} history={history} apiUrl={this.state.apiUrl} />
                   </div>
                   : <Redirect to="/" />
               )}

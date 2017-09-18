@@ -11,7 +11,7 @@ export default class SuggestedBooksContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/book?club_id=${this.props.clubId}`)
+    fetch(`${this.props.apiUrl}/api/v1/book?club_id=${this.props.clubId}`)
       .then(res => res.json())
       .then((books) => {
         const suggestedBooks = books.filter(book => book.status === 'suggested')

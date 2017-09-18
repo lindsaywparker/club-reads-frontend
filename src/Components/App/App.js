@@ -14,8 +14,8 @@ class App extends Component {
     this.state = {
       user_id: null,
       club_id: null,
-      readBooks: null,
-      currentBook: null,
+      readBooks: [],
+      currentBook: {},
     };
 
     this.getUserId = this.getUserId.bind(this);
@@ -24,13 +24,24 @@ class App extends Component {
 
   componentDidMount() {
     // const updateTimer = scheduler.scheduleJob('* * 1 * *', () => {
-    const updateTimer = scheduler.scheduleJob('*/20 * * * * *', () => {
+    const updateTimer = scheduler.scheduleJob('*/5 * * * * *', () => {
       this.updateBookSchedule();
       console.log('Current book updated!');
     });
   }
 
   getUserId(userId, clubId) {
+    fetch(`/api/v1/book?club_id=${clubId}`)
+      .then(data => data.json())
+      .then((books) => {
+        const reading = books.filter(book => book.status === 'reading');
+        const read = books.filter(book => book.status === 'read');
+        this.setState({
+          readBooks: read,
+          currentBook: reading[0],
+        });
+      });
+
     this.setState({
       user_id: userId,
       club_id: clubId,

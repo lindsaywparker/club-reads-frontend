@@ -12,7 +12,7 @@ export default class SignUpForm extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/v1/club')
+    fetch(`${this.props.apiUrl}/api/v1/club`)
       .then(res => res.json())
       .then(clubs => this.setState({ clubs }))
       .catch(err => console.log({ err }));
@@ -22,7 +22,7 @@ export default class SignUpForm extends Component {
     e.preventDefault();
 
     const email = this.state.input;
-    fetch('/api/v1/user/signup', {
+    fetch(`${this.props.apiUrl}/api/v1/user/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

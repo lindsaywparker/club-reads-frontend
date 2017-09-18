@@ -33,9 +33,9 @@ class BookCard extends Component {
       .then(res => res.json())
       .then(data => console.log(data))
       .catch(err => console.log(err));
-  };
+  }
 
-  this.handleVote = (userId, book, direction) => {
+  handleVote(userId, book, direction) {
     fetch('/api/v1/vote', {
       method: 'POST',
       headers: {
@@ -63,13 +63,13 @@ class BookCard extends Component {
           .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
-  };
+  }
 
-  this.handleSuggest = (e, book) => {
+  handleSuggest(e, book) {
     this.addBookToDB(book);
     e.target.classList.add('added');
     e.target.textContent = 'Added!';
-  };
+  }
 
   return (
     <div className="book-card-component">

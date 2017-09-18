@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Header/Header';
 import BookCard from '../BookCard/BookCard';
 
-const SearchResultsContainer = ({ books, userInfo, pathname, suggestedBooks }) => {
+const SearchResultsContainer = ({ books, userInfo, pathname, suggestedBooks, apiUrl }) => {
   const suggestedBooksIds = suggestedBooks.map(book => book.goodreads_id);
   const bookResults = books.map(book =>
     (<BookCard
@@ -12,6 +12,7 @@ const SearchResultsContainer = ({ books, userInfo, pathname, suggestedBooks }) =
       clubId={userInfo.club_id}
       pathname={pathname}
       suggested={suggestedBooksIds.includes(book.goodreads_id)}
+      apiUrl={apiUrl}
     />),
   );
 

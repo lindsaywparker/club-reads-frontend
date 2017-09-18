@@ -51,6 +51,7 @@ export default class SearchPage extends Component {
           books={this.state.books}
           suggestedBooks={this.state.suggestedBooks}
           pathname={this.props.history.location.pathname}
+          apiUrl={this.props.apiUrl}
           {...this.props}
         />}
       </div>

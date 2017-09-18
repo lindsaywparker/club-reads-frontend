@@ -29,6 +29,7 @@ export default class SuggestedBooksContainer extends Component {
         userId={this.props.userId}
         clubId={this.props.clubId}
         pathname={this.props.pathname}
+        apiUrl={this.props.apiUrl}
       />));
 
     return (

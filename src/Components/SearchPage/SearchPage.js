@@ -24,8 +24,6 @@ export default class SearchPage extends Component {
     })
       .then(res => res.text())
       .then((data) => {
-        console.log(this.props.apiUrl);
-
         fetch(`${this.props.apiUrl}/api/v1/book?club_id=${this.props.userInfo.club_id}`)
           .then(data => data.json())
           .then((suggestedBooks) => {

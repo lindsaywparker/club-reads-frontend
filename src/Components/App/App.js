@@ -16,7 +16,7 @@ class App extends Component {
       club_id: null,
       readBooks: [],
       currentBook: {},
-      apiUrl: 'google.com',
+      apiUrl: null,
     };
 
     this.getUserId = this.getUserId.bind(this);
@@ -26,7 +26,6 @@ class App extends Component {
   componentWillMount() {
     const apiUrl = process.env.NODE_ENV === 'production' ? 'https://clubreads-api.herokuapp.com' : '';
     this.setState({ apiUrl });
-    console.log('hi, your apiUrl is...', apiUrl);
   }
 
   componentDidMount() {

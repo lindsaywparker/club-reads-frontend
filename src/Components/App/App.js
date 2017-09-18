@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const apiUrl = process.env.NODE_ENV === 'production' ? 'https://clubreads-api.herokuapp.com/' : '';
+    const apiUrl = process.env.NODE_ENV === 'production' ? 'https://clubreads-api.herokuapp.com' : '';
     this.setState({ apiUrl });
     console.log('hi, your apiUrl is...', apiUrl);
   }

@@ -14,7 +14,7 @@ class BookCard extends Component {
   }
 
   addBookToDB(book) {
-    fetch('/api/v1/book', {
+    fetch(`${this.props.apiUrl}/api/v1/book`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ class BookCard extends Component {
   }
 
   handleVote(userId, book, direction) {
-    fetch('/api/v1/vote', {
+    fetch(`${this.props.apiUrl}/api/v1/vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ class BookCard extends Component {
       .then(res => res.json())
       .then((res) => {
         if (res.error) throw new Error(res.error.detail);
-        fetch(`/api/v1/book?id=${book.id}`, {
+        fetch(`${this.props.apiUrl}/api/v1/book?id=${book.id}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

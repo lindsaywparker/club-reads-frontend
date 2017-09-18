@@ -24,7 +24,7 @@ const Carousel = ({readBooks, currentBook}) => {
       );
     });
 
-  const currentBookCard = (
+  const currentBookCard = currentBook ? (
     <div className="carousel-card current-book">
       <p className="current-label">Currently Reading:</p>
       <div className="card-background" style={{backgroundImage: `url(${currentBook.image})`}}></div>
@@ -35,11 +35,12 @@ const Carousel = ({readBooks, currentBook}) => {
       <p className="book-rating-count">Number of Ratings: {currentBook.ratings_count}</p>
       <a href={`https://www.goodreads.com/book/show/${currentBook.goodreads_id}`}>View on Goodreads</a>
     </div>
-  );
+  ) : null;
 
   return (
     <div className="carousel-component">
-      {currentBook.title && currentBookCard}
+      {currentBook && currentBookCard}
+      {/* {readBooks.length !== 0 && readBookCards} */}
       {readBookCards}
     </div>
   );

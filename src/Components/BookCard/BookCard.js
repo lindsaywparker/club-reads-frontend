@@ -1,7 +1,19 @@
-import React from 'react';
+/* eslint-disable class-methods-use-this */
+import React, {Component} from 'react';
 
-const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
-  this.addBookToDB = (book) => {
+class BookCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      upVotes: props.book.upvotes,
+      downVotes: props.book.downvotes,
+    };
+    this.addBookToDB = this.addBookToDB.bind(this);
+    this.handleVote = this.handleVote.bind(this);
+    this.handleSuggest = this.handleSuggest.bind(this);
+  }
+
+  addBookToDB(book) {
     fetch('/api/v1/book', {
       method: 'POST',
       headers: {
@@ -11,8 +23,8 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
         title: book.title,
         author: book.author,
         image: book.image,
-        user_id: userId,
-        club_id: clubId,
+        user_id: this.props.userId,
+        club_id: this.props.clubId,
         goodreads_id: book.goodreads_id,
         avg_rating: book.avg_rating,
         ratings_count: book.ratings_count,
@@ -21,9 +33,9 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
       .then(res => res.json())
       .then(data => console.log(data))
       .catch(err => console.log(err));
-  };
+  }
 
-  this.handleVote = (userId, book, direction) => {
+  handleVote(userId, book, direction) {
     fetch('/api/v1/vote', {
       method: 'POST',
       headers: {
@@ -47,58 +59,64 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
             direction,
           }),
         })
-          .then(data => console.log(data))
+          .then(() => {
+            this.setState({
+              [`${direction}Votes`]: this.state[`${direction}Votes`] + 1
+            })
+          })
           .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
-  };
+  }
 
-  this.handleSuggest = (e, book) => {
+  handleSuggest(e, book) {
     this.addBookToDB(book);
     e.target.classList.add('added');
     e.target.textContent = 'Added!';
-  };
+  }
 
-  return (
-    <div className="book-card-component">
-      <div className="book-cover">
-        <img src={book.image} alt="Book Cover" />
-        <div className="vote-btns">
-          {(pathname.startsWith('/clubpage/')) && userId &&
-            <input
-              type="button"
-              value="down"
-              className="down-vote"
-              onClick={e => this.handleVote(userId, book, e.target.value)}
-            />}
-          {(pathname.startsWith('/clubpage/')) && userId &&
-            <input
-              type="button"
-              value="up"
-              className="up-vote"
-              onClick={e => this.handleVote(userId, book, e.target.value)}
-            />}
+  render() {
+    return (
+      <div className="book-card-component">
+        <div className="book-cover">
+          <img src={this.props.book.image} alt="Book Cover" />
+          <div className="vote-btns">
+            {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
+              <input
+                type="button"
+                value="down"
+                className="down-vote"
+                onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
+              />}
+            {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
+              <input
+                type="button"
+                value="up"
+                className="up-vote"
+                onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
+              />}
+          </div>
+          <div className="vote-counts">
+            {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
+              <p className="down-vote-count">{this.state.downVotes}</p>}
+            {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
+              <p className="up-vote-count">{this.state.upVotes}</p>}
+          </div>
         </div>
-        <div className="vote-counts">
-          {(pathname.startsWith('/clubpage/')) && userId &&
-            <p className="down-vote-count">{book.downvotes}</p>}
-          {(pathname.startsWith('/clubpage/')) && userId &&
-            <p className="up-vote-count">{book.upvotes}</p>}
+        <div className="book-info">
+          <p className="book-title">{this.props.book.title}</p>
+          <p className="book-author">by {this.props.book.author}</p>
+          <p className="book-rating">Rating: {this.props.book.avg_rating}</p>
+          <p className="book-rating-count">Number of Ratings: {this.props.book.ratings_count}</p>
         </div>
+        <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${this.props.book.goodreads_id}`}target="_blank">View on Goodreads</a>
+        {(this.props.pathname === '/suggestbook') &&
+          <button className={this.props.suggested ? 'added' : null} onClick={e => this.handleSuggest(e, this.props.book)}>
+            {this.props.suggested ? 'Added!' : 'Suggest'}
+          </button>}
       </div>
-      <div className="book-info">
-        <p className="book-title">{book.title}</p>
-        <p className="book-author">by {book.author}</p>
-        <p className="book-rating">Rating: {book.avg_rating}</p>
-        <p className="book-rating-count">Number of Ratings: {book.ratings_count}</p>
-      </div>
-      <a className="goodreads-link" href={`https://www.goodreads.com/book/show/${book.goodreads_id}`} target="_blank">View on Goodreads</a>
-      {(pathname === '/suggestbook') &&
-        <button className={suggested ? 'added' : null} onClick={e => this.handleSuggest(e, book)}>
-          {suggested ? 'Added!' : 'Suggest'}
-        </button>}
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default BookCard;

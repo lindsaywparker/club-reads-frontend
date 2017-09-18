@@ -79,6 +79,12 @@ const BookCard = ({ book, userId, clubId, pathname, suggested }) => {
               onClick={e => this.handleVote(userId, book, e.target.value)}
             />}
         </div>
+        <div className="vote-counts">
+          {(pathname.startsWith('/clubpage/')) && userId &&
+            <p className="down-vote-count">{book.downvotes}</p>}
+          {(pathname.startsWith('/clubpage/')) && userId &&
+            <p className="up-vote-count">{book.upvotes}</p>}
+        </div>
       </div>
       <div className="book-info">
         <p className="book-title">{book.title}</p>

@@ -35,12 +35,10 @@ Additional enhancements could include:
 ### Screenshots
 
 #### Club Page:
-...tbd...
-<!-- ![Club Page Screenshot](https://raw.githubusercontent.com/dstock48/whosplaying/master/screenshots/whosplaying1.png) -->
+![club-reads_club-page](https://user-images.githubusercontent.com/20492875/30620618-b337c5ce-9d63-11e7-925b-d3f878094068.png)
 
 #### Suggest a Book:
-...tbd...
-<!-- ![Suggest a Book Screenshot](https://raw.githubusercontent.com/dstock48/whosplaying/master/screenshots/whosplaying2.png) -->
+![club-reads_suggest-page](https://user-images.githubusercontent.com/20492875/30620617-b12e609e-9d63-11e7-9fec-1ce8188903cb.png)
 
 ### Set Up
 #### Front-end

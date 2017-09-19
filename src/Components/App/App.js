@@ -36,7 +36,6 @@ class App extends Component {
   }
 
   getUserId(userId, clubId) {
-
     fetch(`${this.state.apiUrl}/api/v1/book?club_id=${clubId}`)
       .then(data => data.json())
       .then((books) => {
@@ -89,7 +88,6 @@ class App extends Component {
                 newUpdatedAt: new Date(),
               }),
             })
-              .then(data => console.log(data))
               .catch(err => console.log(err));
             this.setState({
               readBooks: read,

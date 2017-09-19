@@ -17,6 +17,7 @@ export default class SearchPage extends Component {
   }
 
   fetchBooks(searchValue) {
+    this.setState({ loading: true });
     fetch(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?key=bIznxnF3I7kjliNKA5J7rw&q=${searchValue}`, {
       headers: {
         'Access-Control-Allow-Origin': '*',

@@ -6,6 +6,13 @@ import fetchMock from 'fetch-mock';
 import LoginForm from './LoginForm';
 
 describe('LOGIN FORM COMPONENT', () => {
+  const resolveAfter2Seconds = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    });
+  }
   const mockFn = jest.fn();
   const wrapper = shallow(<LoginForm />);
   const emailInput = wrapper.find('.login-email-input');
@@ -34,11 +41,11 @@ describe('LOGIN FORM COMPONENT', () => {
     });
   });
 
-  it.skip('should handle login', () => {
+  it('should handle login', async () => {
     const wrapperMount = mount(<Router><LoginForm getUserId={mockFn} history={[]} /></Router>);
-
     wrapperMount.find('.login-email-input').simulate('change', { target: { value: 'me@me.com' } });
     wrapperMount.find('.login-btn').simulate('submit');
+    await resolveAfter2Seconds();
     expect(mockFn).toHaveBeenCalledTimes(1);
   });
 });

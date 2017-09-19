@@ -1,0 +1,14 @@
+machine:
+  timezone:
+    America/Denver
+  node:
+    version: 7.10.0
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: club-reads
+test:
+  override:
+    # - npm run lint
+    - npm run test

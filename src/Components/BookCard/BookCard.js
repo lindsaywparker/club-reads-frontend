@@ -7,10 +7,25 @@ class BookCard extends Component {
     this.state = {
       upVotes: props.book.upvotes,
       downVotes: props.book.downvotes,
+      userVoted: false,
+      userVoteDirection: null,
     };
     this.addBookToDB = this.addBookToDB.bind(this);
     this.handleVote = this.handleVote.bind(this);
     this.handleSuggest = this.handleSuggest.bind(this);
+  }
+
+  componentDidMount() {
+    fetch(`${this.props.apiUrl}/api/v1/vote?bookId=${this.props.book.id}&userId=${this.props.userId}`)
+      .then(data => data.json())
+      .then((vote) => {
+        if (vote.length) {
+          this.setState({
+            userVoted: true,
+            userVoteDirection: vote[0].direction,
+          });
+        }
+      });
   }
 
   addBookToDB(book) {
@@ -61,7 +76,8 @@ class BookCard extends Component {
         })
           .then(() => {
             this.setState({
-              [`${direction}Votes`]: this.state[`${direction}Votes`] + 1
+              [`${direction}Votes`]: this.state[`${direction}Votes`] + 1,
+              userVoteDirection: direction,
             })
           })
           .catch(err => console.log(err));
@@ -85,14 +101,14 @@ class BookCard extends Component {
               <input
                 type="button"
                 value="down"
-                className="down-vote"
+                className={this.state.userVoteDirection === 'down' ? "down-vote active" : "down-vote"}
                 onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
               />}
             {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
               <input
                 type="button"
                 value="up"
-                className="up-vote"
+                className={this.state.userVoteDirection === 'up' ? "up-vote active" : "up-vote"}
                 onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
               />}
           </div>

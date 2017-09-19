@@ -188,10 +188,58 @@ form {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+
+    .up-vote,
+    .down-vote {
+      border: none;
+      background-color: transparent;
+      background-size: 25px;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 30px;
+      width: 30px;
+      color: transparent;
+      outline: none;
+      transition: 200ms;
+
+    }
+
+    .up-vote {
+      background-image: url('/assets/thumbs-up.svg');
+      transform: translateY(-3px);
+
+      &:hover {
+        cursor: pointer;
+      }
+      &.active {
+        background-image: url('/assets/thumbs-up-solid.svg');
+      }
+    }
+
+    .down-vote {
+      background-image: url('/assets/thumbs-down.svg');
+      transform: translateY(3px);
+
+      &:hover {
+        cursor: pointer;
+      }
+      &.active {
+        background-image: url('/assets/thumbs-down-solid.svg');
+      }
+    }
+  }
+
+  .vote-counts {
+    display: flex;
+    justify-content: center;
+
+    p {
+      margin: 8px 15px 0;
+    }
   }
 
   a {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     color: #837a57;
   }
 

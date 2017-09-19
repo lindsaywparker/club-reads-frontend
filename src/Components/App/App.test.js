@@ -20,4 +20,14 @@ describe('APP COMPONENT', () => {
     ReactDOM.render(<App />, div);
   });
 
+  it('should have initial state', () => {
+    expect(wrapper.state()).toEqual({
+      user_id: null,
+      club_id: null,
+      readBooks: [],
+      currentBook: {},
+      apiUrl: '',
+    });
+  });
+
 });

@@ -13,5 +13,8 @@
     "globals": {
       "document": true,
       "fetch": true
+    },
+    "env": {
+      "jest": true
     }
 }

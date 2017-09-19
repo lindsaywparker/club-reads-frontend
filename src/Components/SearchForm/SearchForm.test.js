@@ -31,7 +31,6 @@ describe('SEARCH FORM COMPONENT', () => {
 
   it('should handle search', () => {
     const wrapperMount = mount(<SearchForm fetchBooks={mockFn} />);
-
     wrapperMount.find('.search-input').simulate('change', { target: { value: 'summer' } });
     wrapperMount.find('.search-btn').simulate('submit');
     expect(mockFn).toHaveBeenCalledTimes(1);

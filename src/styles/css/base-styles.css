@@ -132,8 +132,39 @@ form {
     display: flex;
     justify-content: center;
     margin-top: 10px; }
+    .book-card-component .vote-btns .up-vote,
+    .book-card-component .vote-btns .down-vote {
+      border: none;
+      background-color: transparent;
+      background-size: 25px;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 30px;
+      width: 30px;
+      color: transparent;
+      outline: none;
+      transition: 200ms; }
+    .book-card-component .vote-btns .up-vote {
+      background-image: url("/assets/thumbs-up.svg");
+      transform: translateY(-3px); }
+      .book-card-component .vote-btns .up-vote:hover {
+        cursor: pointer; }
+      .book-card-component .vote-btns .up-vote.active {
+        background-image: url("/assets/thumbs-up-solid.svg"); }
+    .book-card-component .vote-btns .down-vote {
+      background-image: url("/assets/thumbs-down.svg");
+      transform: translateY(3px); }
+      .book-card-component .vote-btns .down-vote:hover {
+        cursor: pointer; }
+      .book-card-component .vote-btns .down-vote.active {
+        background-image: url("/assets/thumbs-down-solid.svg"); }
+  .book-card-component .vote-counts {
+    display: flex;
+    justify-content: center; }
+    .book-card-component .vote-counts p {
+      margin: 8px 15px 0; }
   .book-card-component a {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     color: #837a57; }
   .book-card-component img {
     width: 100px;

@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import fetchMock from 'fetch-mock';
 import App from './App';
 
 describe('APP COMPONENT', () => {
   const wrapper = shallow(<App />);
 
-  const resolveAfter2Seconds = () => {
-    return new Promise((resolve) => {
+  const resolveAfter2Seconds = () =>
+    new Promise((resolve) => {
       setTimeout(() => {
         resolve();
       }, 2000);
     });
-  };
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -120,10 +119,10 @@ describe('APP COMPONENT', () => {
         updated_at: '2017-09-19T06:01:45.625Z',
       },
       apiUrl: '',
-    })
+    });
   });
 
-  it.skip('should update book schedule', async() => {
+  it.skip('should update book schedule', async () => {
     fetchMock.patch('/api/v1/book?status=reading', 204);
     fetchMock.get('/api/v1/book?club_id=1', [
       {
@@ -174,7 +173,7 @@ describe('APP COMPONENT', () => {
         created_at: '2017-09-19T06:01:45.625Z',
         updated_at: '2017-09-19T06:01:45.625Z',
       },
-    ])
+    ]);
     fetchMock.patch('/api/v1/book?id=3', 204);
 
     wrapper.instance().updateBookSchedule();
@@ -214,8 +213,7 @@ describe('APP COMPONENT', () => {
         club_id: 1,
         created_at: '2017-09-19T06:01:45.625Z',
         updated_at: '2017-09-19T06:01:45.625Z',
-      },
-    ],
+      }],
       currentBook: {
         id: 3,
         title: 'Horror Book',
@@ -233,7 +231,6 @@ describe('APP COMPONENT', () => {
         updated_at: '2017-09-19T06:01:45.625Z',
       },
       apiUrl: '',
-    })
-  })
-
+    });
+  });
 });

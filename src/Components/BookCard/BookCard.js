@@ -20,7 +20,6 @@ class BookCard extends Component {
       .then(data => data.json())
       .then((vote) => {
         if (vote.length) {
-          console.log(vote[0]);
           this.setState({
             userVoted: true,
             userVoteDirection: vote[0].direction,

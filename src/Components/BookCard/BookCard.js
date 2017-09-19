@@ -93,7 +93,6 @@ class BookCard extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="book-card-component">
         <div className="book-cover">

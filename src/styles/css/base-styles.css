@@ -243,7 +243,8 @@ form {
   border-radius: 6px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
   text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6); }
-  .carousel-card .current-label {
+  .carousel-card .current-label,
+  .carousel-card .recent-label {
     position: absolute;
     top: -30px;
     left: 0;

@@ -48,4 +48,17 @@ describe('LOGIN FORM COMPONENT', () => {
     await resolveAfter2Seconds();
     expect(mockFn).toHaveBeenCalledTimes(1);
   });
+  it.skip('should throw an error if login is not valid', async () => {
+    const wrapperMount = mount(<Router><LoginForm getUserId={mockFn} history={[]} /></Router>);
+    fetchMock.post('/api/v1/user/login', {
+      error: 'User not found',
+    });
+    wrapperMount.find('.login-email-input').simulate('change', { target: { value: 'chuck@me.com' } });
+    wrapperMount.find('.login-btn').simulate('submit');
+    await resolveAfter2Seconds();
+    console.log(wrapperMount.debug());
+
+    expect(wrapper.find('.msg-to-user').text()).toEqual('hi');
+
+  })
 });

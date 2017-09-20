@@ -1,5 +1,4 @@
-/* eslint-disable class-methods-use-this */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class BookCard extends Component {
   constructor(props) {
@@ -46,7 +45,6 @@ class BookCard extends Component {
       }),
     })
       .then(res => res.json())
-      .then(data => console.log(data))
       .catch(err => console.log(err));
   }
 
@@ -78,7 +76,7 @@ class BookCard extends Component {
             this.setState({
               [`${direction}Votes`]: this.state[`${direction}Votes`] + 1,
               userVoteDirection: direction,
-            })
+            });
           })
           .catch(err => console.log(err));
       })
@@ -100,13 +98,13 @@ class BookCard extends Component {
             <input
               type="button"
               value="down"
-              className={this.state.userVoteDirection === 'down' ? "down-vote active" : "down-vote"}
+              className={this.state.userVoteDirection === 'down' ? 'down-vote active' : 'down-vote'}
               onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
             />
             <input
               type="button"
               value="up"
-              className={this.state.userVoteDirection === 'up' ? "up-vote active" : "up-vote"}
+              className={this.state.userVoteDirection === 'up' ? 'up-vote active' : 'up-vote'}
               onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
             />
           </div>}

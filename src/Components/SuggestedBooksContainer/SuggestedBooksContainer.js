@@ -36,10 +36,7 @@ export default class SuggestedBooksContainer extends Component {
       <div className="suggested-books-container">
         <h1>Suggested Books</h1>
         <p className="suggestion-instructions">
-          Vote for which books you would like to read
-        </p>
-        <p className="suggestion-instructions">
-          Thumbs UP for books you like and thumbs DOWN for books you don't
+          Vote UP or DOWN on these suggested books
         </p>
         <div className="suggested-books">
           {bookResults}

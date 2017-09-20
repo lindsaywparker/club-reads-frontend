@@ -73,7 +73,6 @@ describe('SearchPage tests', () => {
   });
 
   it.skip('should fetch books from goodreads api based on search input', async () => {
-
     fetchMock.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?key=bIznxnF3I7kjliNKA5J7rw&q=eloquent%20javascript',
       `<GoodreadsResponse>
         <Request>
@@ -265,13 +264,11 @@ describe('SearchPage tests', () => {
       loading: false,
     });
   });
-  
+
   it('should render search page component with child components', () => {
-    console.log(wrapper.debug());
     expect(wrapper.find('.search-page-component')).toHaveLength(1);
     expect(wrapper.find('.suggest-book')).toHaveLength(1);
     expect(wrapper.find('SearchForm')).toHaveLength(1);
     expect(wrapper.find('SearchResultsContainer')).toHaveLength(1);
-  })
+  });
 });
-

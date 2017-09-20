@@ -1,8 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 const Header = (props) => {
-
   const logoutHandler = () => {
     props.getUserId(null, null);
     props.history.push('/');

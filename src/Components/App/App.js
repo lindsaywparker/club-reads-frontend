@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import scheduler from 'node-schedule';
-
 import LoginForm from '../../Components/LoginForm/LoginForm';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 import ClubPage from '../../Components/ClubPage/ClubPage';
@@ -31,7 +30,6 @@ class App extends Component {
   componentDidMount() {
     const updateTimer = scheduler.scheduleJob('* * 1 * *', () => {
       this.updateBookSchedule();
-      console.log('Current book updated!');
     });
   }
 

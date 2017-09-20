@@ -1,6 +1,6 @@
 import React from 'react';
-import SuggestedBooksContainer from '../SuggestedBooksContainer/SuggestedBooksContainer'
-import Carousel from '../Carousel/Carousel'
+import SuggestedBooksContainer from '../SuggestedBooksContainer/SuggestedBooksContainer';
+import Carousel from '../Carousel/Carousel';
 
 const ClubPage = ({ userInfo, match, history, readBooks, currentBook, apiUrl }) => (
   <div className="club-page-component">

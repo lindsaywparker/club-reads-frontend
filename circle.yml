@@ -10,5 +10,5 @@ deployment:
       appname: club-reads
 test:
   override:
-    # - npm run lint
+    - npm run lint
     - npm run test

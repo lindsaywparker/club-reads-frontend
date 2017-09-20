@@ -266,3 +266,12 @@ describe('SearchPage tests', () => {
     });
   });
   
+  it('should render search page component with child components', () => {
+    console.log(wrapper.debug());
+    expect(wrapper.find('.search-page-component')).toHaveLength(1);
+    expect(wrapper.find('.suggest-book')).toHaveLength(1);
+    expect(wrapper.find('SearchForm')).toHaveLength(1);
+    expect(wrapper.find('SearchResultsContainer')).toHaveLength(1);
+  })
+});
+

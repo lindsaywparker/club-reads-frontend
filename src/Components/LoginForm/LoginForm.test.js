@@ -1,18 +1,18 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { MemoryRouter as Router } from 'react-router-dom'
+import { MemoryRouter as Router } from 'react-router-dom';
 import fetchMock from 'fetch-mock';
 
 import LoginForm from './LoginForm';
 
 describe('LOGIN FORM COMPONENT', () => {
-  const resolveAfter2Seconds = () => {
-    return new Promise((resolve) => {
+  const resolveAfter2Seconds = () =>
+    new Promise((resolve) => {
       setTimeout(() => {
         resolve();
       }, 2000);
     });
-  }
+
   const mockFn = jest.fn();
   const wrapper = shallow(<LoginForm />);
   const emailInput = wrapper.find('.login-email-input');

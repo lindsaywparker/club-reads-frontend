@@ -12,7 +12,7 @@ const Carousel = ({readBooks, currentBook}) => {
 
       return (
         <div key={`read-book-${book.id}`} className="carousel-card read-book">
-          {i === 0 && <p className="current-label">Recently Read:</p>}
+          {i === 0 && <p className="recent-label">Recently Read:</p>}
           <div className="card-background" style={style}></div>
           <img src={book.image} alt="book cover" />
           <p className="book-title">{book.title}</p>

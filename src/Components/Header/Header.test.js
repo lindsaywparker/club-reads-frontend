@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { MemoryRouter as Router } from 'react-router-dom'
+import { MemoryRouter as Router } from 'react-router-dom';
 
 import Header from './Header';
 

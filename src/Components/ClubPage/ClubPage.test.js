@@ -18,4 +18,7 @@ describe('CLUB PAGE COMPONENT', () => {
     expect(wrapper.find('Carousel')).toHaveLength(1);
   });
 
+  it('should render the SuggestedBooksContainer component', () => {
+    expect(wrapper.find('SuggestedBooksContainer')).toHaveLength(1);
+  });
 });

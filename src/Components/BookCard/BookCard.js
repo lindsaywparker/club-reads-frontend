@@ -96,28 +96,24 @@ class BookCard extends Component {
       <div className="book-card-component">
         <div className="book-cover">
           <img src={this.props.book.image} alt="Book Cover" />
-          <div className="vote-btns">
-            {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
-              <input
-                type="button"
-                value="down"
-                className={this.state.userVoteDirection === 'down' ? "down-vote active" : "down-vote"}
-                onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
-              />}
-            {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
-              <input
-                type="button"
-                value="up"
-                className={this.state.userVoteDirection === 'up' ? "up-vote active" : "up-vote"}
-                onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
-              />}
-          </div>
-          <div className="vote-counts">
-            {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
-              <p className="down-vote-count">{this.state.downVotes}</p>}
-            {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId &&
-              <p className="up-vote-count">{this.state.upVotes}</p>}
-          </div>
+          {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId && <div className="vote-btns">
+            <input
+              type="button"
+              value="down"
+              className={this.state.userVoteDirection === 'down' ? "down-vote active" : "down-vote"}
+              onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
+            />
+            <input
+              type="button"
+              value="up"
+              className={this.state.userVoteDirection === 'up' ? "up-vote active" : "up-vote"}
+              onClick={e => this.handleVote(this.props.userId, this.props.book, e.target.value)}
+            />
+          </div>}
+          {(this.props.pathname.startsWith('/clubpage/')) && this.props.userId && <div className="vote-counts">
+            <p className="down-vote-count">{this.state.downVotes}</p>
+            <p className="up-vote-count">{this.state.upVotes}</p>
+          </div>}
         </div>
         <div className="book-info">
           <p className="book-title">{this.props.book.title}</p>

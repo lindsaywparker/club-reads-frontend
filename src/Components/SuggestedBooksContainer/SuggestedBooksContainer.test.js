@@ -24,6 +24,12 @@ describe('SUGGESTED BOOKS CONTAINER COMPONENT', () => {
     fetchMock.get('/api/v1/book?club_id=1', []);
     wrapper.instance().getUserId(1, 1);
     await resolveAfter2Seconds();
+  it('should render a component element', () => {
+    expect(wrapper.find('.suggested-books-container')).toHaveLength(1);
+    expect(wrapper.find('.suggestion-instructions')).toHaveLength(2);
+    expect(wrapper.find('.suggested-books')).toHaveLength(1);
+  });
+
 
     expect(wrapper.state()).toEqual();
   });

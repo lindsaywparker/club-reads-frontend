@@ -57,7 +57,7 @@ export default class LoginForm extends Component {
             />
             <NavLink className="form-btn signup-btn" to="/signup">Sign Up</NavLink>
           </container>
-          <div className="msg-to-user"></div>
+          <div className="msg-to-user" />
         </form>
       </div>
     );

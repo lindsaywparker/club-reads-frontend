@@ -63,7 +63,7 @@ export default class SignUpForm extends Component {
             name="club-dropdown"
             id="club-dropdown"
             defaultValue="Select a club..."
-            onChange={event => this.setState({ clubSelection: parseInt(event.target.value) })}
+            onChange={event => this.setState({ clubSelection: parseInt(event.target.value, 10) })}
           >
             <option disabled>Select a club...</option>
             {this.state.clubs.map(club => <option key={club.id} value={club.id}>{club.name}</option>)}
@@ -75,7 +75,7 @@ export default class SignUpForm extends Component {
             value="Sign Up"
           />
         </form>
-        <p className="msg-to-user"></p>
+        <p className="msg-to-user" />
       </div>
     );
   }

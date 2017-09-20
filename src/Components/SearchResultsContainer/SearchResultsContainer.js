@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../Header/Header';
 import BookCard from '../BookCard/BookCard';
 
 const SearchResultsContainer = ({ books, userInfo, pathname, suggestedBooks, apiUrl }) => {

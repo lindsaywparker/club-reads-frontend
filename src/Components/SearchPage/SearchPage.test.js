@@ -64,3 +64,11 @@ describe('SearchPage tests', () => {
       }, 2000);
     });
 
+  it('should have initial state', () => {
+    expect(wrapper.state()).toEqual({
+      books: [],
+      suggestedBooks: [],
+      loading: false,
+    });
+  });
+

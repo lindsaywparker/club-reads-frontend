@@ -67,10 +67,10 @@ Run with `npm test` from the associated root directory
 
 ### Contributors
 
-Ciara Bujanos : [GitHub Profile](https://github.com/buji405)
+[Ciara Bujanos](https://github.com/buji405)
 
-Travis Gregory : [GitHub Profile](https://github.com/tlgreg86)
+[Travis Gregory](https://github.com/tlgreg86)
 
-Lindsay Parker : [GitHub Profile](https://github.com/lindsaywparker)
+[Lindsay Parker](https://github.com/lindsaywparker)
 
-Dave Weinstock : [GitHub Profile](https://github.com/dstock48)
+[Dave Weinstock](https://github.com/dstock48)
